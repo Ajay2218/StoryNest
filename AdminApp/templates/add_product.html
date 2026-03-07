@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+{% extends 'dashboard.html' %}
+{% block content %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="col-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <h3 class="card-title text-center">Add Product Details</h3>
+
+                    <form class="forms-sample" method="post" action="{% url 'save_product' %}" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="form-group">
+                        <label for="exampleSelectCategory">Category Name</label>
+                        <select class="form-select" id="exampleSelectCategory" name="cname">
+                          <option>Select the categories</option>
+                            {% for i in categories %}
+                          <option>{{i.Category_name}}</option>
+                            {% endfor %}
+                        </select>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail3">Product Name</label>
+                        <input type="text" class="form-control" id="exampleInputEmail3" placeholder="Product Name" name="pname">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPassword4">Author Name</label>
+                        <input type="text" class="form-control" id="exampleInputPassword4" placeholder="Author Name" name="aname">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputPrice">Price</label>
+                        <input type="number" class="form-control" id="exampleInputPrice" placeholder="Price" name="price">
+                      </div>
+                       <div class="form-group">
+                        <label for="exampleOverview">Overview</label>
+                        <textarea class="form-control" id="exampleOverview" rows="4" name="oview"></textarea>
+                      </div>
+                      <div class="form-group">
+                        <label>Product Img</label>
+                        <input type="file" name="img" class="form-control">
+                      </div>
+                      <button type="submit" class="btn btn-gradient-primary me-2">Submit</button>
+                      <button class="btn btn-light">Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+</body>
+</html>
+{% endblock %}
