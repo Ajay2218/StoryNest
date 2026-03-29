@@ -100,15 +100,17 @@ python manage.py runserver
 
 ---
 
+
 ## 📂 Project Structure
 
-* **StoryNest/**: Project configuration, settings, and main URL routing
-* **Store/** (or your app name): Handles product listing, filtering, and product details
-* **Cart/**: Manages cart operations and checkout process
-* **Orders/**: Handles order processing and payment integration
-* **media/**: Stores uploaded product images
-* **static/**: Contains global CSS, JavaScript, and UI assets
+* **StoryNest/**: Main project configuration, settings, and URL routing
+* **WebApp/**: Core application handling product listing, filtering, cart, and user interactions
+* **AdminApp/**: Custom admin panel for managing products, users, and orders
+* **media/**: Stores uploaded product images and files
+* **static/**: Contains global CSS, JavaScript, and frontend assets
 
 ---
+
+
 
 
