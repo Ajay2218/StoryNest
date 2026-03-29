@@ -1,7 +1,7 @@
 
 ---
 
-# 🚀 StoryNest – Online Bookstore E-commerce Web Application
+# 🚀 StoryNest – Online Bookstore 
 
 StoryNest is a full-stack e-commerce web application built using Django that allows users to browse, explore, and purchase books online. It provides a seamless shopping experience with product filtering, cart management, and secure payment integration.
 
@@ -111,5 +111,4 @@ python manage.py runserver
 
 ---
 
-* Add **screenshots section (like GitHub projects)**
-* Or make it more **ATS/portfolio optimized** 🚀
+
