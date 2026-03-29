@@ -14,3 +14,19 @@ class CartDb(models.Model):
     Quantity = models.IntegerField(null=True,blank=True)
     Price = models.IntegerField(null=True,blank=True)
     Total_price = models.IntegerField(null=True,blank=True)
+
+
+class OrderDb(models.Model):
+    Username = models.CharField(max_length=100, null=True, blank=True)
+    Full_name = models.CharField(max_length=100, null=True, blank=True)
+    Place = models.CharField(max_length=100, null=True, blank=True)
+    Email = models.EmailField(max_length=100, null=True, blank=True)
+    Address = models.CharField(max_length=200, null=True, blank=True)
+    Pincode = models.IntegerField(null=True, blank=True)
+    Message = models.TextField(null=True, blank=True)
+    Mobile = models.BigIntegerField(null=True, blank=True)
+    Total_price = models.CharField(max_length=100, null=True, blank=True)
+    Razorpay_order_id = models.CharField(max_length=200, null=True, blank=True)
+    Razorpay_payment_id = models.CharField(max_length=200, null=True, blank=True)
+    Razorpay_signature = models.CharField(max_length=255, null=True, blank=True)
+    Payment_status = models.CharField(max_length=30, null=True, blank=True, default="Pending")

@@ -17,6 +17,11 @@ urlpatterns = [
         path('login/',views.login_page,name="login"),
         path('save_user/',views.save_user,name="save_user"),
         path('user_login/',views.user_login,name="user_login"),
-        path('user_logout/',views.user_logout,name="user_logout")
+        path('user_logout/',views.user_logout,name="user_logout"),
+
+        path('payment/',views.payment_page,name="payment"),
+        path('payment/<int:order_id>/',views.payment_page,name="payment_by_id"),
+        path('payment-success/',views.payment_success,name="payment_success"),
+        path('payment-failed/',views.payment_failed,name="payment_failed")
 
 ]

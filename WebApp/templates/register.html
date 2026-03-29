@@ -59,6 +59,28 @@
     <!-- JS -->
     <script src="{% static 'register/vendor/jquery/jquery.min.js' %}"></script>
     <script src="{% static 'register/js/main.js' %}"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    {% if messages %}
+        {% for i in messages %}
+            {% if i.tags == 'success' %}
+                <script>
+                    swal("{{ i|escapejs }}", "", "success");
+                </script>
+            {% elif i.tags == 'error' %}
+                <script>
+                    swal("{{ i|escapejs }}", "", "error");
+                </script>
+            {% elif i.tags == 'info' %}
+                <script>
+                    swal("{{ i|escapejs }}", "", "info");
+                </script>
+            {% elif i.tags == 'warning' %}
+                <script>
+                    swal("{{ i|escapejs }}", "", "warning");
+                </script>
+            {% endif %}
+        {% endfor %}
+    {% endif %}
     <script>
        function form_validation(){
             let pass = document.reg_form.password.value;
@@ -66,13 +88,13 @@
             if (pass == ""){
                 alert("password cant be blank");
             }
-            elseif (cpass == ""){
+            else if (cpass == ""){
                  alert("Please confirm your password");
             }
-            elseif (pass != cpass){
+            else if (pass != cpass){
                  alert("password does not match");
             }
-            elseif(pass.length < 8 ){
+            else if(pass.length < 8 ){
                  alert("password must contain minimum of 8 characters");
             }
         }

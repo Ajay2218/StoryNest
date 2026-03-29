@@ -62,19 +62,19 @@
         {% for i in messages %}
             {% if i.tags == 'success' %}
                 <script>
-                    swal({{i}},'','success')
+                    swal("{{ i|escapejs }}", "", "success");
                 </script>
             {% elif i.tags == 'error' %}
                 <script>
-                    swal({{i}},'','error')
+                    swal("{{ i|escapejs }}", "", "error");
                 </script>
             {% elif i.tags == 'info' %}
                 <script>
-                    swal({{i}},'','info')
+                    swal("{{ i|escapejs }}", "", "info");
                 </script>
             {% elif i.tags == 'warning' %}
                 <script>
-                    swal({{i}},'','warning' %}
+                    swal("{{ i|escapejs }}", "", "warning");
                 </script>
             {% endif %}
         {% endfor %}

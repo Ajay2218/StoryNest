@@ -1,5 +1,5 @@
 """
-URL configuration for eBookMart project.
+URL configuration for StoryNest project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.2/topics/http/urls/
@@ -17,14 +17,14 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import AdminApp.urls
-from eBookMart import settings
+from StoryNest import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns, static
 import WebApp.urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('AdminApp/',include(AdminApp.urls),name="AdminApp"),
-    path('eBookMart/',include(WebApp.urls),name="eBookMart")
+    path('StoryNest/',include(WebApp.urls),name="StoryNest")
 ]
 
 urlpatterns += staticfiles_urlpatterns()

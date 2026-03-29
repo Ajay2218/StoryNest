@@ -24,68 +24,35 @@
   </head>
   <body>
 
-  	<div class="wrap">
+  		<div class="wrap">
 			<div class="container">
 				<div class="row">
 					<div class="col-md-6 d-flex align-items-center">
 						<p class="mb-0 phone pl-md-2">
-							<a href="#" class="mr-2"><span class="fa fa-phone mr-1"></span> +00 1234 567</a>
-							<a href="#"><span class="fa fa-paper-plane mr-1"></span> youremail@email.com</a>
+							<a href="tel:+919876543210" class="mr-2"><span class="fa fa-phone mr-1"></span> +91 98765 43210</a>
+							<a href="mailto:hello@storynest.com"><span class="fa fa-paper-plane mr-1"></span> hello@storynest.com</a>
 						</p>
 					</div>
 					<div class="col-md-6 d-flex justify-content-md-end">
-						<div class="social-media mr-4">
-			    		<p class="mb-0 d-flex">
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-facebook"><i class="sr-only">Facebook</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-twitter"><i class="sr-only">Twitter</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-instagram"><i class="sr-only">Instagram</i></span></a>
-			    			<a href="#" class="d-flex align-items-center justify-content-center"><span class="fa fa-dribbble"><i class="sr-only">Dribbble</i></span></a>
-			    		</p>
-		        </div>
+
+                        {% if request.session.Username %}
 		        <div class="reg">
-		        	<p class="mb-0"><a href="#" class="mr-2">Sign Up</a> <a href="#">Log In</a></p>
+		        	<p class="mb-0 text-light">Welcome {{request.session.Username}}&nbsp;&nbsp;&nbsp;<a href="{% url 'user_logout' %}">Log Out</a></p>
 		        </div>
+                        {% else %}
+                        <div class="reg">
+		        	<p class="mb-0"><a href="{% url 'register' %}" class="mr-2">Sign Up</a> <a href="{% url 'login' %}">Log In</a></p>
+		        </div>
+                        {% endif %}
 					</div>
 				</div>
 			</div>
 		</div>
 
+
 	  <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light" id="ftco-navbar">
-	    <div class="container">
-	      <a class="navbar-brand" href="index.html">Liquor <span>store</span></a>
-	      <div class="order-lg-last btn-group">
-          <a href="#" class="btn-cart dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          	<span class="flaticon-shopping-bag"></span>
-          	<div class="d-flex justify-content-center align-items-center"><small>3</small></div>
-          </a>
-          <div class="dropdown-menu dropdown-menu-right">
-				    <div class="dropdown-item d-flex align-items-start" href="#">
-				    	<div class="img" style="background-image: url({% static 'web/images/prod-1.jpg' %});"></div>
-				    	<div class="text pl-3">
-				    		<h4>Bacardi 151</h4>
-				    		<p class="mb-0"><a href="#" class="price">$25.99</a><span class="quantity ml-3">Quantity: 01</span></p>
-				    	</div>
-				    </div>
-				    <div class="dropdown-item d-flex align-items-start" href="#">
-				    	<div class="img" style="background-image: url({% static 'web/images/prod-2.jpg' %});"></div>
-				    	<div class="text pl-3">
-				    		<h4>Jim Beam Kentucky Straight</h4>
-				    		<p class="mb-0"><a href="#" class="price">$30.89</a><span class="quantity ml-3">Quantity: 02</span></p>
-				    	</div>
-				    </div>
-				    <div class="dropdown-item d-flex align-items-start" href="#">
-				    	<div class="img" style="background-image: url({% static 'web/images/prod-3.jpg' %});"></div>
-				    	<div class="text pl-3">
-				    		<h4>Citadelle</h4>
-				    		<p class="mb-0"><a href="#" class="price">$22.50</a><span class="quantity ml-3">Quantity: 01</span></p>
-				    	</div>
-				    </div>
-				    <a class="dropdown-item text-center btn-link d-block w-100" href="cart.html">
-				    	View All
-				    	<span class="ion-ios-arrow-round-forward"></span>
-				    </a>
-				  </div>
-        </div>
+	    <div class="container-fluid">
+	      <a class="navbar-brand" href="{% url 'home' %}">Story <span>Nest</span></a>
 
 	      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
 	        <span class="oi oi-menu"></span> Menu
@@ -93,26 +60,28 @@
 
 	      <div class="collapse navbar-collapse" id="ftco-nav">
 	        <ul class="navbar-nav ml-auto">
-	          <li class="nav-item"><a href="index.html" class="nav-link">Home</a></li>
-	          <li class="nav-item"><a href="about.html" class="nav-link">About</a></li>
-	          <li class="nav-item dropdown active">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Products</a>
+	          <li class="nav-item"><a href="{% url 'home' %}" class="nav-link">Home</a></li>
+	          <li class="nav-item"><a href="{% url 'about' %}" class="nav-link">About</a></li>
+	          <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
               <div class="dropdown-menu" aria-labelledby="dropdown04">
-              	<a class="dropdown-item" href="product.html">Products</a>
-                <a class="dropdown-item" href="product-single.html">Single Product</a>
-                <a class="dropdown-item" href="cart.html">Cart</a>
-                <a class="dropdown-item" href="checkout.html">Checkout</a>
+                  {% for c in categories %}
+              	<a class="dropdown-item" href="{% url 'filtered_product' cat_name=c.Category_name %}">{{c.Category_name}}</a>
+                {% endfor %}
               </div>
             </li>
-	          <li class="nav-item	"><a href="blog.html" class="nav-link">Blog</a></li>
-	          <li class="nav-item"><a href="contact.html" class="nav-link">Contact</a></li>
+                <li class="nav-item"><a href="{% url 'all_products' %}" class="nav-link">Products</a></li>
+	          <li class="nav-item"><a href="{% url 'contact' %}" class="nav-link">Contact</a></li>
+                {% if request.session.Username %}
+                <li class="nav-item"><a href="{% url 'cart' %}" class="nav-link">Cart</a></li>
+	            {% endif %}
 	        </ul>
 	      </div>
 	    </div>
 	  </nav>
     <!-- END nav -->
 
-    <section class="hero-wrap hero-wrap-2" style="background-image: url('images/bg_2.jpg');" data-stellar-background-ratio="0.5">
+    <section class="hero-wrap hero-wrap-2" style="background-image: url({% static 'web/images/janko-ferlic-sfL_QOnmy00-unsplash.jpg' %});" data-stellar-background-ratio="0.5">
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-center">
@@ -128,16 +97,6 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-md-9">
-						<div class="row mb-4">
-							<div class="col-md-12 d-flex justify-content-between align-items-center">
-								<h4 class="product-select">Select Types of Products</h4>
-								<select class="selectpicker" multiple>
-                                  {% for i in categories %}
-				          <option>{{i.Category_name}}</option>
-				            {% endfor %}
-				        </select>
-							</div>
-						</div>
 						<div class="row">
                             {% for p in product %}
 							<div class="col-md-4 d-flex">
@@ -145,8 +104,7 @@
 									<div class="img d-flex align-items-center justify-content-center" style="background-image: url({{p.Product_img.url}});">
 										<div class="desc">
 											<p class="meta-prod d-flex">
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-shopping-bag"></span></a>
-												<a href="#" class="d-flex align-items-center justify-content-center"><span class="flaticon-heart"></span></a>
+												
 												<a href="{% url 'single_product' pro_id=p.id %}" class="d-flex align-items-center justify-content-center"><span class="flaticon-visibility"></span></a>
 											</p>
 										</div>
@@ -160,21 +118,7 @@
 							</div>
 							{% endfor %}
 						</div>
-						<div class="row mt-5">
-		          <div class="col text-center">
-		            <div class="block-27">
-		              <ul>
-		                <li><a href="#">&lt;</a></li>
-		                <li class="active"><span>1</span></li>
-		                <li><a href="#">2</a></li>
-		                <li><a href="#">3</a></li>
-		                <li><a href="#">4</a></li>
-		                <li><a href="#">5</a></li>
-		                <li><a href="#">&gt;</a></li>
-		              </ul>
-		            </div>
-		          </div>
-		        </div>
+						
 					</div>
 
 					<div class="col-md-3">
@@ -183,45 +127,13 @@
                 <h3>Product Types</h3>
                 <ul class="p-0">
                     {% for c in categories %}
-                	<li><a href="#">{{c.Category_name}}<span class="fa fa-chevron-right"></span></a></li>
+                	<li><a href="{% url 'filtered_product' cat_name=c.Category_name %}">{{c.Category_name}}<span class="fa fa-chevron-right"></span></a></li>
 	                {% endfor %}
                 </ul>
               </div>
             </div>
 
-            <div class="sidebar-box ftco-animate">
-              <h3>Recent Blog</h3>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url({% static 'web/images/image_1.jpg' %});"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="fa fa-calendar"></span> Apr. 18, 2020</a></div>
-                    <div><a href="#"><span class="fa fa-comment"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url({% static 'web/images/image_2.jpg' %});"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="fa fa-calendar"></span> Apr. 18, 2020</a></div>
-                    <div><a href="#"><span class="fa fa-comment"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-              <div class="block-21 mb-4 d-flex">
-                <a class="blog-img mr-4" style="background-image: url({% static 'web/images/image_3.jpg' %});"></a>
-                <div class="text">
-                  <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                  <div class="meta">
-                    <div><a href="#"><span class="fa fa-calendar"></span> Apr. 18, 2020</a></div>
-                    <div><a href="#"><span class="fa fa-comment"></span> 19</a></div>
-                  </div>
-                </div>
-              </div>
-            </div>
+            
 					</div>
 				</div>
 			</div>
@@ -230,75 +142,67 @@
     <footer class="ftco-footer">
       <div class="container">
         <div class="row mb-5">
-          <div class="col-sm-12 col-md">
-            <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2 logo"><a href="#">Liquor <span>Store</span></a></h2>
-              <p>Far far away, behind the word mountains, far from the countries.</p>
+          <div class="col-sm-12 col-md-4">
+            <div class="ftco-footer-widget mb-4 pr-md-4">
+              <h2 class="ftco-heading-2 logo"><a href="{% url 'home' %}">Story <span>Nest</span></a></h2>
+              <p>Your online bookstore for fresh arrivals, popular categories, and stories worth revisiting.</p>
               <ul class="ftco-footer-social list-unstyled mt-2">
-                <li class="ftco-animate"><a href="#"><span class="fa fa-twitter"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="fa fa-facebook"></span></a></li>
-                <li class="ftco-animate"><a href="#"><span class="fa fa-instagram"></span></a></li>
+                <li class="ftco-animate"><a href="{% url 'home' %}" title="Home"><span class="fa fa-home"></span></a></li>
+                <li class="ftco-animate"><a href="{% url 'all_products' %}" title="Books"><span class="fa fa-book"></span></a></li>
+                <li class="ftco-animate"><a href="{% url 'contact' %}" title="Contact"><span class="fa fa-envelope"></span></a></li>
               </ul>
             </div>
           </div>
-          <div class="col-sm-12 col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-4">
-              <h2 class="ftco-heading-2">My Accounts</h2>
-              <ul class="list-unstyled">
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Account</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Register</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Log In</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>My Order</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md">
-            <div class="ftco-footer-widget mb-4 ml-md-4">
-              <h2 class="ftco-heading-2">Information</h2>
-              <ul class="list-unstyled">
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>About us</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Catalog</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Contact us</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Term &amp; Conditions</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md">
-             <div class="ftco-footer-widget mb-4">
-              <h2 class="ftco-heading-2">Quick Link</h2>
-              <ul class="list-unstyled">
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>New User</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Help Center</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Report Spam</a></li>
-                <li><a href="#"><span class="fa fa-chevron-right mr-2"></span>Faq's</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-12 col-md">
+          <div class="col-sm-12 col-md-2">
             <div class="ftco-footer-widget mb-4">
-            	<h2 class="ftco-heading-2">Have a Questions?</h2>
-            	<div class="block-23 mb-3">
-	              <ul>
-	                <li><span class="icon fa fa-map marker"></span><span class="text">203 Fake St. Mountain View, San Francisco, California, USA</span></li>
-	                <li><a href="#"><span class="icon fa fa-phone"></span><span class="text">+2 392 3929 210</span></a></li>
-	                <li><a href="#"><span class="icon fa fa-paper-plane pr-4"></span><span class="text">info@yourdomain.com</span></a></li>
-	              </ul>
-	            </div>
+              <h2 class="ftco-heading-2">Explore</h2>
+              <ul class="list-unstyled">
+                <li><a href="{% url 'home' %}"><span class="fa fa-chevron-right mr-2"></span>Home</a></li>
+                <li><a href="{% url 'about' %}"><span class="fa fa-chevron-right mr-2"></span>About</a></li>
+                <li><a href="{% url 'all_products' %}"><span class="fa fa-chevron-right mr-2"></span>Books</a></li>
+                <li><a href="{% url 'contact' %}"><span class="fa fa-chevron-right mr-2"></span>Contact</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Account</h2>
+              <ul class="list-unstyled">
+                {% if request.session.Username %}
+                <li><a href="{% url 'cart' %}"><span class="fa fa-chevron-right mr-2"></span>My Cart</a></li>
+                <li><a href="{% url 'user_logout' %}"><span class="fa fa-chevron-right mr-2"></span>Log Out</a></li>
+                {% else %}
+                <li><a href="{% url 'register' %}"><span class="fa fa-chevron-right mr-2"></span>Create Account</a></li>
+                <li><a href="{% url 'login' %}"><span class="fa fa-chevron-right mr-2"></span>Log In</a></li>
+                {% endif %}
+                <li><a href="{% url 'checkout' %}"><span class="fa fa-chevron-right mr-2"></span>Checkout</a></li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-3">
+            <div class="ftco-footer-widget mb-4">
+              <h2 class="ftco-heading-2">Get In Touch</h2>
+              <div class="block-23 mb-3">
+                <ul>
+                  <li><span class="icon fa fa-map marker"></span><span class="text">Story Nest Online Store</span></li>
+                  <li><a href="mailto:hello@storynest.com"><span class="icon fa fa-paper-plane pr-4"></span><span class="text">hello@storynest.com</span></a></li>
+                  <li><a href="{% url 'contact' %}"><span class="icon fa fa-comments"></span><span class="text">Reach us through the contact page</span></a></li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
       </div>
-      <div class="container-fluid px-0 py-5 bg-black">
-      	<div class="container">
-      		<div class="row">
-	          <div class="col-md-12">
-
-	            <p class="mb-0" style="color: rgba(255,255,255,.5);"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-	  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart color-danger" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib.com</a>
-	  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-	          </div>
-	        </div>
-      	</div>
+      <div class="container-fluid px-0 py-4 bg-black">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <p class="mb-0 text-center" style="color: rgba(255,255,255,.7);">
+                Copyright &copy;<script>document.write(new Date().getFullYear());</script> Story Nest. Crafted for readers, authors, and everyday book lovers.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </footer>
 
